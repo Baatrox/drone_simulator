@@ -12,8 +12,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 public class ServerConnectionHandler implements Runnable {
 
@@ -66,15 +65,12 @@ public class ServerConnectionHandler implements Runnable {
                 map.placeDrone(drone);
             }
 
-            ReentrantLock lock = new ReentrantLock();
-            Condition condition = lock.newCondition();
-
-            DisplayWorker displayWorker = new DisplayWorker(map, lock, condition);
+            DisplayWorker displayWorker = new DisplayWorker(map);
             displayWorker.start();
 
             List<DroneWorker> workers = new ArrayList<>();
             for (Drone drone : drones) {
-                DroneWorker worker = new DroneWorker(drone, map, lock, condition);
+                DroneWorker worker = new DroneWorker(drone, map);
                 workers.add(worker);
                 worker.start();
             }

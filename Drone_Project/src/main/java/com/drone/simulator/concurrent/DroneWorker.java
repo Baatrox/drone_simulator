@@ -2,21 +2,15 @@ package com.drone.simulator.concurrent;
 
 import com.drone.simulator.Drone;
 import com.drone.simulator.SimulatorMap;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class DroneWorker extends Thread {
 
     private Drone drone;
     private SimulatorMap map;
-    private ReentrantLock lock;
-    private Condition condition;
 
-    public DroneWorker(Drone drone, SimulatorMap map, ReentrantLock lock, Condition condition) {
+    public DroneWorker(Drone drone, SimulatorMap map) {
         this.drone = drone;
         this.map = map;
-        this.lock = lock;
-        this.condition = condition;
     }
 
     @Override
@@ -26,13 +20,6 @@ public class DroneWorker extends Thread {
             char command = commands.charAt(i);
 
             drone.move(command, map);
-
-            lock.lock();
-            try {
-                condition.signalAll();
-            } finally {
-                lock.unlock();
-            }
 
             try {
                 Thread.sleep(50);

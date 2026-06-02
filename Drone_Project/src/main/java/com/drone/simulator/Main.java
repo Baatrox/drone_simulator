@@ -40,9 +40,10 @@ public class Main {
                     String subChoice = scanner.nextLine().trim();
                     if (subChoice.equals("3a") || subChoice.equals("a")) {
                         Thread serverThread = new Thread(() -> new DroneServer().start());
-                        serverThread.setDaemon(true);
                         serverThread.start();
                         System.out.println("Serveur démarré sur le port 5000.");
+                        System.out.println("ATTENTION: Ne quittez pas le programme tant que");
+                        System.out.println("le serveur est en cours d'exécution (Ctrl+C pour forcer l'arrêt).");
                     } else if (subChoice.equals("3b") || subChoice.equals("b")) {
                         new DroneClient().run();
                     } else {
