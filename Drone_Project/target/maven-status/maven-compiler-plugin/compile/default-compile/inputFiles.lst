@@ -1,0 +1,13 @@
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/ConfigFileReader.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/Drone.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/Main.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/SimulatorBasic.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/SimulatorMap.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/client/ConfigurationProvider.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/client/DroneClient.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/client/FileConfigurationProvider.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/concurrent/DisplayWorker.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/concurrent/DroneWorker.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/concurrent/SimulatorConcurrent.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/server/DroneServer.java
+/home/baatrox/DataStore/personal/Java/schoolProject/Drone_Project/src/main/java/com/drone/simulator/server/ServerConnectionHandler.java
