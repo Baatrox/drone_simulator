@@ -25,9 +25,7 @@ public class DisplayWorker extends Thread {
             try {
                 condition.await(100, TimeUnit.MILLISECONDS);
                 clearScreen();
-                synchronized (map) {
-                    map.displayMap();
-                }
+                map.displayMap();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 break;

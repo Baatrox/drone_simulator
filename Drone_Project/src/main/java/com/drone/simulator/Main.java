@@ -1,5 +1,6 @@
 package com.drone.simulator;
 
+import com.drone.simulator.client.DroneClient;
 import com.drone.simulator.server.DroneServer;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Main {
             System.out.println("========================================");
             System.out.println("1. Mode Basique (Séquentiel)");
             System.out.println("2. Mode Concurrent (Threads)");
-            System.out.println("3. Mode Serveur (Réseau)");
+            System.out.println("3. Mode Réseau (3a=Serveur / 3b=Client)");
             System.out.println("0. Quitter");
             System.out.print("Choisissez un mode : ");
 
@@ -33,7 +34,17 @@ public class Main {
                     new com.drone.simulator.concurrent.SimulatorConcurrent().executeSimulation();
                     break;
                 case 3:
-                    new DroneServer().start();
+                    System.out.println("3a. Démarrer le Serveur");
+                    System.out.println("3b. Démarrer le Client");
+                    System.out.print("Votre choix : ");
+                    String subChoice = scanner.nextLine().trim();
+                    if (subChoice.equals("3a") || subChoice.equals("a")) {
+                        new DroneServer().start();
+                    } else if (subChoice.equals("3b") || subChoice.equals("b")) {
+                        new DroneClient().run();
+                    } else {
+                        System.out.println("Choix invalide.");
+                    }
                     break;
                 case 0:
                     System.out.println("Au revoir !");

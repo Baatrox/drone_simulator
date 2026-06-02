@@ -22,7 +22,9 @@ public class DroneClient {
         try {
             FileConfigurationProvider configProvider = new FileConfigurationProvider("drones.txt");
 
-            try (Socket socket = new Socket(SERVER_HOST, SERVER_PORT);
+            Socket socket = new Socket(SERVER_HOST, SERVER_PORT);
+            socket.setSoTimeout(30000);
+            try (socket;
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                  BufferedReader in = new BufferedReader(
                          new InputStreamReader(socket.getInputStream()))) {

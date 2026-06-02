@@ -31,22 +31,25 @@ public class Drone {
     }
 
     public void move(char command, SimulatorMap map) {
-        synchronized (map) {
-            switch (command) {
-                case 'L':
+        switch (command) {
+            case 'L':
+                synchronized (map) {
                     turnLeft();
-                    break;
-                case 'R':
+                    map.getGrid()[y][x] = getDisplayChar();
+                }
+                break;
+            case 'R':
+                synchronized (map) {
                     turnRight();
-                    break;
-                case 'M':
-                    moveForward(map);
-                    return;
-                case 'B':
-                    moveBackward(map);
-                    return;
-            }
-            map.getGrid()[y][x] = getDisplayChar();
+                    map.getGrid()[y][x] = getDisplayChar();
+                }
+                break;
+            case 'M':
+                moveForward(map);
+                break;
+            case 'B':
+                moveBackward(map);
+                break;
         }
     }
 

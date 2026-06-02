@@ -25,9 +25,10 @@ public class DroneWorker extends Thread {
         for (int i = 0; i < commands.length(); i++) {
             char command = commands.charAt(i);
 
+            drone.move(command, map);
+
             lock.lock();
             try {
-                drone.move(command, map);
                 condition.signalAll();
             } finally {
                 lock.unlock();

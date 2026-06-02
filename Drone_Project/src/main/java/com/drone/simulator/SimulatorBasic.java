@@ -41,6 +41,8 @@ public class SimulatorBasic {
             System.out.println("===========================================");
 
             map.placeDrone(drone);
+            map.displayMap();
+            System.out.println();
 
             for (int c = 0; c < commands.length(); c++) {
                 char command = commands.charAt(c);
