@@ -39,7 +39,10 @@ public class Main {
                     System.out.print("Votre choix : ");
                     String subChoice = scanner.nextLine().trim();
                     if (subChoice.equals("3a") || subChoice.equals("a")) {
-                        new DroneServer().start();
+                        Thread serverThread = new Thread(() -> new DroneServer().start());
+                        serverThread.setDaemon(true);
+                        serverThread.start();
+                        System.out.println("Serveur démarré sur le port 5000.");
                     } else if (subChoice.equals("3b") || subChoice.equals("b")) {
                         new DroneClient().run();
                     } else {

@@ -11,6 +11,7 @@ public class DisplayWorker extends Thread {
     private ReentrantLock lock;
     private Condition condition;
     private volatile boolean running = true;
+    private long lastDisplayTime = 0;
 
     public DisplayWorker(SimulatorMap map, ReentrantLock lock, Condition condition) {
         this.map = map;
@@ -23,9 +24,13 @@ public class DisplayWorker extends Thread {
         while (running) {
             lock.lock();
             try {
-                condition.await(100, TimeUnit.MILLISECONDS);
-                clearScreen();
-                map.displayMap();
+                condition.await(500, TimeUnit.MILLISECONDS);
+                long now = System.currentTimeMillis();
+                if (now - lastDisplayTime >= 500) {
+                    clearScreen();
+                    map.displayMap();
+                    lastDisplayTime = now;
+                }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 break;
@@ -41,7 +46,9 @@ public class DisplayWorker extends Thread {
     }
 
     private void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        if (System.console() != null) {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
     }
 }

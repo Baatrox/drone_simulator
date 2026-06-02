@@ -67,13 +67,17 @@ public class SimulatorConcurrent {
             Thread.currentThread().interrupt();
         }
 
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        System.out.println("\n\n");
+
+        if (System.console() != null) {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
         synchronized (map) {
             map.displayMap();
         }
 
-        System.out.println("\n\nPositions finales des drones:");
+        System.out.println("\n\n\nPositions finales des drones:");
         for (int i = 0; i < drones.size(); i++) {
             System.out.println("Drone " + i + " : " + drones.get(i).getPosition());
         }
