@@ -65,7 +65,7 @@ public class ServerConnectionHandler implements Runnable {
                 map.placeDrone(drone);
             }
 
-            DisplayWorker displayWorker = new DisplayWorker(map);
+            DisplayWorker displayWorker = new DisplayWorker(map, drones);
             displayWorker.start();
 
             List<DroneWorker> workers = new ArrayList<>();
@@ -88,6 +88,17 @@ public class ServerConnectionHandler implements Runnable {
             out.println("SUCCESS");
             for (Drone drone : drones) {
                 out.println(drone.getPosition());
+            }
+
+            out.println("MAP");
+            char[][] grid = map.getGrid();
+            for (int y = height - 1; y >= 0; y--) {
+                StringBuilder row = new StringBuilder();
+                for (int x = 0; x < width; x++) {
+                    if (x > 0) row.append(' ');
+                    row.append(grid[y][x]);
+                }
+                out.println(row);
             }
 
         } catch (IOException e) {

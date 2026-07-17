@@ -47,6 +47,18 @@ public class DroneClient {
                             System.out.println("Drone " + i + " : " + position);
                         }
                     }
+
+                    String mapHeader = in.readLine();
+                    if ("MAP".equals(mapHeader)) {
+                        int height = configProvider.getMapHeight();
+                        System.out.println("\nCarte des positions finales :");
+                        for (int y = 0; y < height; y++) {
+                            String row = in.readLine();
+                            if (row != null) {
+                                System.out.println(row);
+                            }
+                        }
+                    }
                 } else {
                     System.out.println("Erreur retournée par le serveur.");
                 }

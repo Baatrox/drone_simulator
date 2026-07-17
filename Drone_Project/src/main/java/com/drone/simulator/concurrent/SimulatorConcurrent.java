@@ -37,7 +37,7 @@ public class SimulatorConcurrent {
             map.placeDrone(drone);
         }
 
-        DisplayWorker displayWorker = new DisplayWorker(map);
+        DisplayWorker displayWorker = new DisplayWorker(map, drones);
         displayWorker.start();
 
         List<DroneWorker> workers = new ArrayList<>();

@@ -14,11 +14,19 @@ mvn clean package
 java -jar target/drone-simulator-1.0.jar
 ```
 
+## Tests
+
+```bash
+mvn test
+```
+
+5 classes de test couvrent les 3 versions : `DroneTest`, `SimulatorMapTest`, `ConfigFileReaderTest`, `SimulatorBasicTest`, `SimulatorConcurrentTest`.
+
 ## Modes
 
-1. **Mode Basique (Séquentiel)** : Les drones se déplacent un par un
-2. **Mode Concurrent (Threads)** : Les drones se déplacent simultanément
-3. **Mode Serveur (Réseau)** : Configuration envoyée par le réseau
+1. **Mode Basique (Séquentiel)** : Les drones se déplacent un par un, affichage après chaque commande.
+2. **Mode Concurrent (Threads)** : Les drones se déplacent simultanément dans des threads séparés, carte mise à jour en direct.
+3. **Mode Serveur (Réseau)** : Le serveur exécute la simulation concurrente et renvoie les positions finales au client.
 
 ## Mode Serveur
 
@@ -30,6 +38,14 @@ Choisissez un mode : 3
 
 **Terminal 2 (client)** :
 ```bash
+java -cp target/drone-simulator-1.0.jar com.drone.simulator.client.DroneClient
+```
+
+Alternativement, lancer directement :
+```bash
+# Terminal 1
+java -cp target/drone-simulator-1.0.jar com.drone.simulator.server.DroneServer
+# Terminal 2
 java -cp target/drone-simulator-1.0.jar com.drone.simulator.client.DroneClient
 ```
 
@@ -49,13 +65,13 @@ Exemple :
 5 0 S MMRMMRMRRM
 ```
 
-### Commandes
+## Commandes
 - `L` : Rotation 90° à gauche
 - `R` : Rotation 90° à droite
 - `M` : Avancer d'une case
 - `B` : Reculer d'une case
 
-### Orientations
+## Orientations
 - `N` : Nord (haut)
 - `S` : Sud (bas)
 - `E` : Est (droite)

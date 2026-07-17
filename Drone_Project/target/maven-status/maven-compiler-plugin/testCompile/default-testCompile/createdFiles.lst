@@ -1,0 +1,5 @@
+com/drone/simulator/SimulatorMapTest.class
+com/drone/simulator/ConfigFileReaderTest.class
+com/drone/simulator/SimulatorBasicTest.class
+com/drone/simulator/DroneTest.class
+com/drone/simulator/SimulatorConcurrentTest.class
